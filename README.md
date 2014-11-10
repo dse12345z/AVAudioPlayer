@@ -6,7 +6,7 @@ AVAudioPlayer 簡單的播放器結合 FinishPlaying Block
 =============
 
 [AVAudioPlayer playMP3Name:@"Westlife - My Love" completion: ^{  
-	    // play finish do something ...  
+＜/br＞＜/br＞＜/br＞// play finish do something ...  
 	}];  
 	
 其他方法跟原生差不多:
