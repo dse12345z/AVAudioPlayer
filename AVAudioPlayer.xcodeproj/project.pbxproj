@@ -14,6 +14,9 @@
 		7EA3609A1A10B6F200B7CFAF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA360991A10B6F200B7CFAF /* Images.xcassets */; };
 		7EA3609D1A10B6F200B7CFAF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3609B1A10B6F200B7CFAF /* LaunchScreen.xib */; };
 		7EA360A91A10B6F200B7CFAF /* AVAudioPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA360A81A10B6F200B7CFAF /* AVAudioPlayerTests.m */; };
+		7EA360B91A10B71000B7CFAF /* AVAudioPlayer+Daisuke.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA360B81A10B71000B7CFAF /* AVAudioPlayer+Daisuke.m */; };
+		7EA360BB1A10B75B00B7CFAF /* Westlife - My Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7EA360BA1A10B75B00B7CFAF /* Westlife - My Love.mp3 */; };
+		7EA360BD1A10BA9400B7CFAF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA360BC1A10BA9400B7CFAF /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,10 @@
 		7EA360A21A10B6F200B7CFAF /* AVAudioPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVAudioPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA360A71A10B6F200B7CFAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EA360A81A10B6F200B7CFAF /* AVAudioPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVAudioPlayerTests.m; sourceTree = "<group>"; };
+		7EA360B71A10B71000B7CFAF /* AVAudioPlayer+Daisuke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAudioPlayer+Daisuke.h"; sourceTree = "<group>"; };
+		7EA360B81A10B71000B7CFAF /* AVAudioPlayer+Daisuke.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioPlayer+Daisuke.m"; sourceTree = "<group>"; };
+		7EA360BA1A10B75B00B7CFAF /* Westlife - My Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Westlife - My Love.mp3"; sourceTree = "<group>"; };
+		7EA360BC1A10BA9400B7CFAF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA360BD1A10BA9400B7CFAF /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +71,9 @@
 		7EA360801A10B6F200B7CFAF = {
 			isa = PBXGroup;
 			children = (
+				7EA360BC1A10BA9400B7CFAF /* AVFoundation.framework */,
+				7EA360BA1A10B75B00B7CFAF /* Westlife - My Love.mp3 */,
+				7EA360B61A10B71000B7CFAF /* AVAudioPlayer+Daisuke */,
 				7EA3608B1A10B6F200B7CFAF /* AVAudioPlayer */,
 				7EA360A51A10B6F200B7CFAF /* AVAudioPlayerTests */,
 				7EA3608A1A10B6F200B7CFAF /* Products */,
@@ -117,6 +128,16 @@
 				7EA360A71A10B6F200B7CFAF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7EA360B61A10B71000B7CFAF /* AVAudioPlayer+Daisuke */ = {
+			isa = PBXGroup;
+			children = (
+				7EA360B71A10B71000B7CFAF /* AVAudioPlayer+Daisuke.h */,
+				7EA360B81A10B71000B7CFAF /* AVAudioPlayer+Daisuke.m */,
+			);
+			name = "AVAudioPlayer+Daisuke";
+			path = "AVAudioPlayer/AVAudioPlayer+Daisuke";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA360BB1A10B75B00B7CFAF /* Westlife - My Love.mp3 in Resources */,
 				7EA360981A10B6F200B7CFAF /* Main.storyboard in Resources */,
 				7EA3609D1A10B6F200B7CFAF /* LaunchScreen.xib in Resources */,
 				7EA3609A1A10B6F200B7CFAF /* Images.xcassets in Resources */,
@@ -220,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EA360951A10B6F200B7CFAF /* ViewController.m in Sources */,
+				7EA360B91A10B71000B7CFAF /* AVAudioPlayer+Daisuke.m in Sources */,
 				7EA360921A10B6F200B7CFAF /* AppDelegate.m in Sources */,
 				7EA3608F1A10B6F200B7CFAF /* main.m in Sources */,
 			);
@@ -412,6 +435,7 @@
 				7EA360AE1A10B6F200B7CFAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EA360AF1A10B6F200B7CFAF /* Build configuration list for PBXNativeTarget "AVAudioPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +444,7 @@
 				7EA360B11A10B6F200B7CFAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

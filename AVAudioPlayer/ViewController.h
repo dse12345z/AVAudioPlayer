@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "AVAudioPlayer+Daisuke.h"
+
 @interface ViewController : UIViewController
 
-
 @end
-
