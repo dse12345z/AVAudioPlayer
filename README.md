@@ -9,6 +9,7 @@ AVAudioPlayer 簡單的播放器結合 FinishPlaying Block
 　　　// play finish do something ...  
 }];  
   
+  
     
       
         
