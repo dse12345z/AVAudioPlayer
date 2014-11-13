@@ -18,7 +18,6 @@ typedef void (^PlayFinishCallBackBlock)();
 
 @interface DSKPlayer : NSObject
 
-@property (nonatomic, readonly) BOOL isPlaying;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 
 + (void)playMP3Name:(NSString *)mp3Name completion:(PlayFinishCallBackBlock)completion;
@@ -31,5 +30,7 @@ typedef void (^PlayFinishCallBackBlock)();
 
 + (int)currentTime;
 + (int)duration;
+
++ (BOOL)isPlaying;
 
 @end

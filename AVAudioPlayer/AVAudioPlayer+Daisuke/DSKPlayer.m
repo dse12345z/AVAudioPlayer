@@ -54,6 +54,10 @@ static DSKPlayer *shared = nil;
 	return [[DSKPlayer shared] duration];
 }
 
++ (BOOL)isPlaying {
+    return [[DSKPlayer shared] isPlaying];
+}
+
 #pragma mark - private function
 
 + (DSKPlayer *)shared {
@@ -68,9 +72,7 @@ static DSKPlayer *shared = nil;
 
 - (void)playMP3Name:(NSString *)mp3Name fromDocument:(PathFrom)pathFromIndex completion:(PlayFinishCallBackBlock)completion {
 	[self setPlayFinishCallBackBlock:completion];
-
-	[self setAudioPlayer:nil];
-
+    
 	NSString *path = [self pathMp3Name:mp3Name fromDocument:pathFromIndex];
 
 	if (path) {
