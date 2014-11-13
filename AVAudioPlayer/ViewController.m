@@ -14,12 +14,28 @@
 
 @implementation ViewController
 
+- (IBAction)currentTimeAction:(id)sender {
+	NSLog(@"%d", [DSKPlayer currentTime]);
+}
+
+- (IBAction)setTimeAction:(id)sender {
+	[DSKPlayer setCurrentTime:[DSKPlayer duration] - 5];
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	[AVAudioPlayer playMP3Name:@"Westlife - My Love" completion: ^{
+	[DSKPlayer playMP3Name:@"Westlife - My Love" completion: ^{
 	    // play finish do something ...
 	}];
+
+//	[DSKPlayer playMP3NameFromDocument:@"Westlife - My Love" completion: ^{
+//	    // play finish do something ...
+//	}];
+//
+//    [DSKPlayer playMP3NameFromResource:@"Westlife - My Love" completion: ^{
+//        // play finish do something ...
+//    }];
 }
 
 @end

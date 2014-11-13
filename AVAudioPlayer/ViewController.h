@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "AVAudioPlayer+Daisuke.h"
+#import "DSKPlayer.h"
 
 @interface ViewController : UIViewController
 
