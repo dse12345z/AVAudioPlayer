@@ -7,157 +7,142 @@
 
 #import "DSKPlayer.h"
 
-#import <objc/runtime.h>
-
 #define AVAudioPlayerIsNull(obj) if (!obj) { NSLog((@"%s [Line %d] AVAudioPlayer%@"), __PRETTY_FUNCTION__, __LINE__, obj); }
 
-@interface DSKPlayer (Private)
+@interface DSKPlayer ()
 
-+ (void)setPlayFinishCallBackBlock:(PlayFinishCallBackBlock)finishCallBack;
-+ (PlayFinishCallBackBlock)getPlayFinishCallBackBlock;
+@property (nonatomic, strong) AVAudioPlayer *audioPlayer;
+@property (nonatomic, strong) PlayFinishCallBackBlock completion;
 
 @end
 
-static DSKPlayer *shared = nil;
-
 @implementation DSKPlayer
 
-+ (void)playMP3Name:(NSString *)mp3Name completion:(PlayFinishCallBackBlock)completion {
-	[[DSKPlayer shared] playMP3Name:mp3Name fromDocument:PathFromBoth completion:completion];
-}
+#pragma mark - class method
 
-+ (void)playMP3NameFromDocument:(NSString *)mp3Name completion:(PlayFinishCallBackBlock)completion {
-	[[DSKPlayer shared] playMP3Name:mp3Name fromDocument:PathFromDocument completion:completion];
-}
-
-+ (void)playMP3NameFromResource:(NSString *)mp3Name completion:(PlayFinishCallBackBlock)completion {
-	[[DSKPlayer shared] playMP3Name:mp3Name fromDocument:PathFromResource completion:completion];
++ (void)playMP3:(NSString *)mp3Name pathType:(PathType)pathType completion:(PlayFinishCallBackBlock)completion {
+    [[DSKPlayer shared] playMP3:mp3Name pathType:pathType completion:completion];
 }
 
 + (void)setCurrentTime:(int)time {
-	[[DSKPlayer shared] setCurrentTime:time];
+    [[DSKPlayer shared] setCurrentTime:time];
 }
 
 + (void)play {
-	[[DSKPlayer shared] play];
+    [[DSKPlayer shared] play];
 }
 
 + (void)pause {
-	[[DSKPlayer shared] pause];
+    [[DSKPlayer shared] pause];
 }
 
 + (int)currentTime {
-	return [[DSKPlayer shared] currentTime];
+    return [[DSKPlayer shared] currentTime];
 }
 
 + (int)duration {
-	return [[DSKPlayer shared] duration];
+    return [[DSKPlayer shared] duration];
 }
 
 + (BOOL)isPlaying {
     return [[DSKPlayer shared] isPlaying];
 }
 
-#pragma mark - private function
+#pragma mark - private method
 
 + (DSKPlayer *)shared {
-	@synchronized(self)
-	{
-		if (shared == nil) {
-			shared = [[self alloc] init];
-		}
-	}
-	return shared;
+    static DSKPlayer *shared = nil;
+    if (!shared) {
+        shared = [[self alloc] init];
+    }
+    return shared;
 }
 
-- (void)playMP3Name:(NSString *)mp3Name fromDocument:(PathFrom)pathFromIndex completion:(PlayFinishCallBackBlock)completion {
-	[self setPlayFinishCallBackBlock:completion];
-    
-	NSString *path = [self pathMp3Name:mp3Name fromDocument:pathFromIndex];
-
-	if (path) {
-		self.audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
-		self.audioPlayer.delegate = (id <AVAudioPlayerDelegate> )self;
-		[self.audioPlayer prepareToPlay];
-		[self.audioPlayer play];
-	}
-	else {
-		self.getPlayFinishCallBackBlock();
-	}
+- (void)playMP3:(NSString *)mp3Name pathType:(PathType)pathType completion:(PlayFinishCallBackBlock)completion {
+    self.completion = completion;
+    NSString *path = [self pathMp3Name:mp3Name fromDocument:pathType];
+    if (path) {
+        self.audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+        self.audioPlayer.delegate = (id <AVAudioPlayerDelegate> )self;
+        [self.audioPlayer prepareToPlay];
+        [self.audioPlayer play];
+    }
+    else {
+        self.completion();
+    }
 }
 
 - (BOOL)isPlaying {
-	AVAudioPlayerIsNull(self.audioPlayer);
-	return self.audioPlayer.isPlaying;
+    AVAudioPlayerIsNull(self.audioPlayer);
+    return self.audioPlayer.isPlaying;
 }
 
 - (void)setCurrentTime:(int)time {
-	AVAudioPlayerIsNull(self.audioPlayer);
-	self.audioPlayer.currentTime = time;
+    AVAudioPlayerIsNull(self.audioPlayer);
+    self.audioPlayer.currentTime = time;
 }
 
 - (void)play {
-	AVAudioPlayerIsNull(self.audioPlayer);
-	[self.audioPlayer play];
+    AVAudioPlayerIsNull(self.audioPlayer);
+    [self.audioPlayer play];
 }
 
 - (void)pause {
-	AVAudioPlayerIsNull(self.audioPlayer);
-	[self.audioPlayer pause];
+    AVAudioPlayerIsNull(self.audioPlayer);
+    [self.audioPlayer pause];
 }
 
 - (int)currentTime {
-	AVAudioPlayerIsNull(self.audioPlayer);
-	return self.audioPlayer.currentTime;
+    AVAudioPlayerIsNull(self.audioPlayer);
+    return self.audioPlayer.currentTime;
 }
 
 - (int)duration {
-	AVAudioPlayerIsNull(self.audioPlayer);
-	return self.audioPlayer.duration;
+    AVAudioPlayerIsNull(self.audioPlayer);
+    return self.audioPlayer.duration;
 }
 
-- (NSString *)pathMp3Name:(NSString *)mp3Name fromDocument:(PathFrom)pathFromIndex {
-	NSString *path;
-	switch (pathFromIndex) {
-		case PathFromBoth:
-		case PathFromDocument:
-		{
-			NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-			path = [[documentPath objectAtIndex:0] stringByAppendingString:[NSString stringWithFormat:@"/%@.mp3", mp3Name]];
+- (NSString *)pathMp3Name:(NSString *)mp3Name fromDocument:(PathType)pathType {
+    NSString *path;
+    switch (pathType) {
+        case PathTypeFromBoth:
+        {
+            path = [self pathMp3Name:mp3Name fromDocument:PathTypeFromDocument];
+            if (!path.length) {
+                path = [self pathMp3Name:mp3Name fromDocument:PathTypeFromResource];
+            }
+            break;
+        }
+            
+        case PathTypeFromDocument:
+        {
+            NSArray *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            path = [documentPath[0] stringByAppendingString:[NSString stringWithFormat:@"/%@.mp3", mp3Name]];
+            break;
+        }
+            
+        case PathTypeFromResource:
+        {
+            path = [[NSBundle mainBundle] pathForResource:mp3Name ofType:@".mp3"];
+            break;
+        }
+    }
+    
+    if (![self isFindMP3:path]) {
+        path = [NSString new];
+    }
+    return path;
+}
 
-			NSFileManager *fileManager = [NSFileManager defaultManager];
-			if ([fileManager fileExistsAtPath:path]) {
-				return path;
-			}
-
-			// PathFromBoth: 先從 Document 找檔案，沒有再從 Resource
-			if (pathFromIndex != PathFromBoth) {
-				return nil;
-			}
-		}
-
-		case PathFromResource:
-		{
-			path = [[NSBundle mainBundle] pathForResource:mp3Name ofType:@".mp3"];
-			return path;
-		}
-	}
+- (BOOL)isFindMP3:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    return [fileManager fileExistsAtPath:path] ? YES : NO;
 }
 
 #pragma mark - AVAudioPlayer delegate
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-	self.getPlayFinishCallBackBlock();
-}
-
-#pragma mark - access object
-
-- (void)setPlayFinishCallBackBlock:(PlayFinishCallBackBlock)finishCallBack {
-	objc_setAssociatedObject(self, @selector(getPlayFinishCallBackBlock), finishCallBack, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-
-- (PlayFinishCallBackBlock)getPlayFinishCallBackBlock {
-	return objc_getAssociatedObject(self, _cmd);
+    self.completion();
 }
 
 @end

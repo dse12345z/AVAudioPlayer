@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		7EA3608F1A10B6F200B7CFAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3608E1A10B6F200B7CFAF /* main.m */; };
 		7EA360921A10B6F200B7CFAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA360911A10B6F200B7CFAF /* AppDelegate.m */; };
-		7EA360951A10B6F200B7CFAF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA360941A10B6F200B7CFAF /* ViewController.m */; };
 		7EA360981A10B6F200B7CFAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA360961A10B6F200B7CFAF /* Main.storyboard */; };
 		7EA3609A1A10B6F200B7CFAF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA360991A10B6F200B7CFAF /* Images.xcassets */; };
 		7EA3609D1A10B6F200B7CFAF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3609B1A10B6F200B7CFAF /* LaunchScreen.xib */; };
 		7EA360A91A10B6F200B7CFAF /* AVAudioPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA360A81A10B6F200B7CFAF /* AVAudioPlayerTests.m */; };
 		7EA360B91A10B71000B7CFAF /* DSKPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA360B81A10B71000B7CFAF /* DSKPlayer.m */; };
-		7EA360BB1A10B75B00B7CFAF /* Westlife - My Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7EA360BA1A10B75B00B7CFAF /* Westlife - My Love.mp3 */; };
 		7EA360BD1A10BA9400B7CFAF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA360BC1A10BA9400B7CFAF /* AVFoundation.framework */; };
+		7EF5AFDC1B7B3DD600EB3A90 /* Westlife - My Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7EF5AFDB1B7B3DD600EB3A90 /* Westlife - My Love.mp3 */; };
+		7EF5AFE41B7B3EF500EB3A90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF5AFE31B7B3EF500EB3A90 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +35,6 @@
 		7EA3608E1A10B6F200B7CFAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7EA360901A10B6F200B7CFAF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7EA360911A10B6F200B7CFAF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7EA360931A10B6F200B7CFAF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7EA360941A10B6F200B7CFAF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7EA360971A10B6F200B7CFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EA360991A10B6F200B7CFAF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7EA3609C1A10B6F200B7CFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -45,8 +43,10 @@
 		7EA360A81A10B6F200B7CFAF /* AVAudioPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVAudioPlayerTests.m; sourceTree = "<group>"; };
 		7EA360B71A10B71000B7CFAF /* DSKPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSKPlayer.h; sourceTree = "<group>"; };
 		7EA360B81A10B71000B7CFAF /* DSKPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSKPlayer.m; sourceTree = "<group>"; };
-		7EA360BA1A10B75B00B7CFAF /* Westlife - My Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Westlife - My Love.mp3"; sourceTree = "<group>"; };
 		7EA360BC1A10BA9400B7CFAF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7EF5AFDB1B7B3DD600EB3A90 /* Westlife - My Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Westlife - My Love.mp3"; sourceTree = "<group>"; };
+		7EF5AFE21B7B3EF500EB3A90 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7EF5AFE31B7B3EF500EB3A90 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +71,11 @@
 		7EA360801A10B6F200B7CFAF = {
 			isa = PBXGroup;
 			children = (
-				7EA360BC1A10BA9400B7CFAF /* AVFoundation.framework */,
-				7EA360BA1A10B75B00B7CFAF /* Westlife - My Love.mp3 */,
 				7EA360B61A10B71000B7CFAF /* AVAudioPlayer+Daisuke */,
 				7EA3608B1A10B6F200B7CFAF /* AVAudioPlayer */,
 				7EA360A51A10B6F200B7CFAF /* AVAudioPlayerTests */,
 				7EA3608A1A10B6F200B7CFAF /* Products */,
+				7EF5AFDA1B7B3DA300EB3A90 /* Framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,8 +93,7 @@
 			children = (
 				7EA360901A10B6F200B7CFAF /* AppDelegate.h */,
 				7EA360911A10B6F200B7CFAF /* AppDelegate.m */,
-				7EA360931A10B6F200B7CFAF /* ViewController.h */,
-				7EA360941A10B6F200B7CFAF /* ViewController.m */,
+				7EF5AFE11B7B3EF500EB3A90 /* ViewController */,
 				7EA360961A10B6F200B7CFAF /* Main.storyboard */,
 				7EA360991A10B6F200B7CFAF /* Images.xcassets */,
 				7EA3609B1A10B6F200B7CFAF /* LaunchScreen.xib */,
@@ -107,6 +105,7 @@
 		7EA3608C1A10B6F200B7CFAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7EF5AFDB1B7B3DD600EB3A90 /* Westlife - My Love.mp3 */,
 				7EA3608D1A10B6F200B7CFAF /* Info.plist */,
 				7EA3608E1A10B6F200B7CFAF /* main.m */,
 			);
@@ -138,6 +137,23 @@
 			);
 			name = "AVAudioPlayer+Daisuke";
 			path = "AVAudioPlayer/AVAudioPlayer+Daisuke";
+			sourceTree = "<group>";
+		};
+		7EF5AFDA1B7B3DA300EB3A90 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				7EA360BC1A10BA9400B7CFAF /* AVFoundation.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		7EF5AFE11B7B3EF500EB3A90 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7EF5AFE21B7B3EF500EB3A90 /* ViewController.h */,
+				7EF5AFE31B7B3EF500EB3A90 /* ViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EA360BB1A10B75B00B7CFAF /* Westlife - My Love.mp3 in Resources */,
+				7EF5AFDC1B7B3DD600EB3A90 /* Westlife - My Love.mp3 in Resources */,
 				7EA360981A10B6F200B7CFAF /* Main.storyboard in Resources */,
 				7EA3609D1A10B6F200B7CFAF /* LaunchScreen.xib in Resources */,
 				7EA3609A1A10B6F200B7CFAF /* Images.xcassets in Resources */,
@@ -241,9 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EA360951A10B6F200B7CFAF /* ViewController.m in Sources */,
 				7EA360B91A10B71000B7CFAF /* DSKPlayer.m in Sources */,
 				7EA360921A10B6F200B7CFAF /* AppDelegate.m in Sources */,
+				7EF5AFE41B7B3EF500EB3A90 /* ViewController.m in Sources */,
 				7EA3608F1A10B6F200B7CFAF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
