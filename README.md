@@ -5,10 +5,9 @@ DSKPlayer 簡單的播放器結合 FinishPlaying Block
 使用方法
 =============
 
-[DSKPlayer playMP3Name:@"Westlife - My Love" completion: ^{  
+[DSKPlayer playMP3:@"Westlife - My Love" pathType:PathTypeFromBoth completion: ^{  
 　　　// play finish do something ...  
 }];  
-  
   
   
 設置播放時間  
