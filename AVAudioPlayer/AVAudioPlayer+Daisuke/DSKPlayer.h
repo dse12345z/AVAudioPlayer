@@ -11,7 +11,8 @@
 typedef enum {
     PathTypeFromDefault,
     PathTypeFromDocument,
-    PathTypeFromResource
+    PathTypeFromResource,
+    PathTypeFromURL
 } PathType;
 
 typedef void (^PlayFinishCallBackBlock)();

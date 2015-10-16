@@ -28,6 +28,11 @@
     [DSKPlayer playMP3:@"Westlife - My Love" pathType:PathTypeFromDefault completion: ^{
         // play finish do something ...
     }];
+    
+    /*
+    [DSKPlayer playMP3:@"https://www.dropbox.com/s/xbww361mt0dpocs/Westlife%20-%20My%20Love.mp3?dl=1" pathType:PathTypeFromURL completion: ^{
+        // play finish do something ...
+    }];*/
 }
 
 @end

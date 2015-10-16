@@ -50,6 +50,8 @@
 
 #pragma mark - private method
 
+#pragma mark * init
+
 + (DSKPlayer *)shared {
     static DSKPlayer *shared = nil;
     if (!shared) {
@@ -58,11 +60,22 @@
     return shared;
 }
 
+#pragma mark * AVAudioPlayer
+
 - (void)playMP3:(NSString *)mp3Name pathType:(PathType)pathType completion:(PlayFinishCallBackBlock)completion {
     self.completion = completion;
     NSString *path = [self pathMp3Name:mp3Name fromDocument:pathType];
     if (path) {
-        self.audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+        if (pathType == PathTypeFromURL) {
+            // URL
+            NSURL *url = [NSURL URLWithString:path];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            self.audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:NULL];
+        }
+        else {
+            // File
+            self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:NULL];
+        }
         self.audioPlayer.delegate = (id <AVAudioPlayerDelegate> )self;
         [self.audioPlayer prepareToPlay];
         [self.audioPlayer play];
@@ -102,6 +115,14 @@
     return self.audioPlayer.duration;
 }
 
+#pragma mark * AVAudioPlayer delegate
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    self.completion();
+}
+
+#pragma mark * fetch file
+
 - (NSString *)pathMp3Name:(NSString *)mp3Name fromDocument:(PathType)pathType {
     NSString *path;
     switch (pathType) {
@@ -126,6 +147,11 @@
             path = [[NSBundle mainBundle] pathForResource:mp3Name ofType:@".mp3"];
             break;
         }
+            
+        case PathTypeFromURL:
+        {
+            return mp3Name;
+        }
     }
     
     if (![self isFindMP3:path]) {
@@ -134,15 +160,11 @@
     return path;
 }
 
+#pragma mark * misc
+
 - (BOOL)isFindMP3:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     return [fileManager fileExistsAtPath:path] ? YES : NO;
-}
-
-#pragma mark - AVAudioPlayer delegate
-
-- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
-    self.completion();
 }
 
 @end
