@@ -1,29 +1,41 @@
 DSKPlayer
 =============
-DSKPlayer 簡單的播放器結合 FinishPlaying Block
+DSKPlayer is a simple player combine Block.
 
-使用方法
+Usage
 =============
 
-[DSKPlayer playMP3:@"Westlife - My Love" pathType:PathTypeFromBoth completion: ^{  
+[DSKPlayer playMP3:@"Westlife - My Love" pathType:PathTypeFromDefault completion: ^{  
 　　　// play finish do something ...  
-}];  
-  
-  
-設置播放時間  
-[DSKPlayer setCurrentTime:(int)];
+}];
 
-播放  
-[DSKPlayer play];
+PathType
+=============
+typedef enum {
 
-暫停  
-[DSKPlayer pause];
+    PathTypeFromDefault,
+    PathTypeFromDocument,
+    PathTypeFromResource
+    
+} PathType;
 
-判斷是否播放中  
-[DSKPlayer isPlaying];
+PathTypeFromDefault: First from document, if no files, the second from the resource.
 
-當前播放時間  
+PathTypeFromDocument: Only from the document.
+
+PathTypeFromResource: Only from the resource.
+
+Other
+=============
+
+[DSKPlayer setCurrentTime:10.0f];
+
 [DSKPlayer currentTime];
 
-音樂總長時間  
 [DSKPlayer duration];
+
+[DSKPlayer play];
+
+[DSKPlayer isPlaying];
+
+[DSKPlayer pause];
