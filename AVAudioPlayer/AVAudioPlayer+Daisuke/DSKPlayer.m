@@ -105,7 +105,7 @@
 - (NSString *)pathMp3Name:(NSString *)mp3Name fromDocument:(PathType)pathType {
     NSString *path;
     switch (pathType) {
-        case PathTypeFromBoth:
+        case PathTypeFromDefault:
         {
             path = [self pathMp3Name:mp3Name fromDocument:PathTypeFromDocument];
             if (!path.length) {

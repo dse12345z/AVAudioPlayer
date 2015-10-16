@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [DSKPlayer playMP3:@"Westlife - My Love" pathType:PathTypeFromBoth completion: ^{
+    [DSKPlayer playMP3:@"Westlife - My Love" pathType:PathTypeFromDefault completion: ^{
         // play finish do something ...
     }];
 }

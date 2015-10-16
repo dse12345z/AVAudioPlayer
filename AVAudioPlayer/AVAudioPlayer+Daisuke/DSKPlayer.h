@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    PathTypeFromBoth = 0,
+    PathTypeFromDefault,
     PathTypeFromDocument,
     PathTypeFromResource
 } PathType;
